@@ -1,0 +1,57 @@
+{{extend 'layout_app_logged.html'}}
+
+<style>
+#add_service_container h1{
+    color: #f7316a;
+    text-transform: uppercase;
+    font-size: 15px;
+    width: 110%;
+}
+
+#add_service_container span{
+    font-size: 13px;
+    float: right;
+    margin-right: -15px;
+    margin-top: -10px;
+}
+#pet_service_user_id__row{
+    display: none;
+}
+
+div.w2p_flash.alert {
+    display: none;
+
+    top: 75px;
+    right: 30px;
+    cursor: pointer;
+    z-index: 1000;
+    background-color: #f70505;
+    border-color: #f06d6d;
+    color: #fff;
+}
+
+.txt-service {
+    text-align: justify;
+    font-weight: bold;
+}
+</style>
+
+<div class="jumbotron jumbotron-fluid background" style="background-color: #fff; padding:30px;word-wrap:break-word;">
+    <div class="" id="add_service_container">
+        <h1>Preferências durante os serviços</h1>
+        <span>(Opcional)</span>
+    </div>
+    <br>
+    <div class="container">
+        <p class="txt-service">
+            Registre em nosso sistema os principais cuidados que você espera que seu pet receba durante a prestação de serviços e cadastre o histórico de saúde de seu animal.
+        </p>
+    </div>
+    <div class="container">
+        {{=form}}
+    </div>
+</div>
+
+<script>
+ $("#submit_record__row").append("<div class='col-sm-9 col-sm-offset-3'><a class='btn btn-secondary' src='{{=URL(c='app', f='finish_registration', args=[auth.user.id, 'first'])}}'>Pular</a></div>");
+</script>

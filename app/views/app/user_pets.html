@@ -1,0 +1,44 @@
+{{extend 'layout_app_logged.html'}}
+
+<style>
+.pet-name{
+    padding-left: 15px;
+    padding-right: 15px;
+}
+.img-thumbnail{
+    width: 100px;
+    height: 100px;
+}
+hr{
+    border: 1px solid #f7316a;
+}
+#user_info_id__row{
+    display: none;
+}
+</style>
+
+<style>#user_info_user_id__row{display:none;}</style>
+<div class="jumbotron jumbotron-fluid background" style="background-color: #fff; padding:30px;word-wrap:break-word;">
+    <p>Meus Pets</p>
+    <div class="container center">
+        {{for pet in pets:}}
+            <div class='pet-container col-lg-4 col-md-4 col-sm-4 col-xs-6'>
+                <img class="img-responsive img-thumbnail" src="{{=URL('download', args=pet.pet_image)}}" alt="">
+                <br>
+                <span class="badge badge-secondary pet-name">{{=pet.pet_name}}</span>
+            </div>
+        {{pass}}
+        <div class='pet-container col-lg-4 col-md-4 col-sm-4 col-xs-6'>
+            <a href="{{=URL(c='app', f='add_pet')}}">
+                <img class="img-responsive img-thumbnail" src="{{=URL('static', 'images/add_pet.png')}}" alt="">
+            </a>
+            <br>
+            <span class="badge badge-secondary pet-name">Adicionar pet</span>
+        </div>
+    </div>
+    <hr>
+    <div class="container">
+        <p>Dados Pessoais</p>
+        {{=form}}
+    </div>
+</div>

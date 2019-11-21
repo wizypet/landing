@@ -1,0 +1,66 @@
+{{extend 'layout_app_logoff.html'}}
+
+<div class="row"> 
+  <div id="web2py_user_form" class="col-lg-6" style="background-color:white; margin: 0 auto 5px auto; padding: 20px">
+      {{if request.args(0) == 'register':}}
+      <p>
+        Preencha os dados abaixo e crie uma conta na Wizy para facilitar a identificação e controlar o histórico do seu animal.
+      </p>
+      {{pass}}
+      {{if request.args(0) == 'login':}}
+        <div class="container center">
+          <img src="{{=URL('static','images/logo_tag.png')}}" alt="">
+        </div>
+      {{pass}}
+      {{if request.args(0) == 'retrieve_password':}}
+        <p>Insira seus dados para recuperar a senha.</p>
+      {{pass}}
+      
+      {{=form}}
+      {{if request.args(0) == 'register':}}
+      <p>
+        	<input type="checkbox" name="terms" id="terms" required >
+        	{{=T('Li e aceito os')}} <a href="#" title="{{=T('Termos de uso')}}">{{=T('termos de uso')}}</a> 
+        	{{=T('e as')}} <a href="#" title="{{=T('Políticas de Privacidade')}}">{{=T('políticas de privacidade')}}</a>. 
+		  </p>
+      {{pass}}
+      <div class="container center">
+
+        {{if request.args(0)=='login' and not 'retrieve_password' in auth.settings.actions_disabled:}}
+          <a href="{{=URL('user/retrieve_password')}}">{{=T('Lost your password?')}}</a>
+        {{pass}}
+
+        {{if request.args(0)=='login':}}
+          <p><strong>Ainda não sou cadastrado</strong></p>
+          <a class='btn btn-secondary' href="{{=URL('user/register')}}">Criar conta</a>
+
+        {{pass}}
+      </div>
+  </div>
+</div>
+
+{{block page_js}}
+<script>
+  jQuery("#web2py_user_form input:visible:enabled:first").focus();
+  {{if request.args(0)=='register':}}
+      web2py_validate_entropy(jQuery('#auth_user_password'),100);
+
+      jQuery(function() {
+        //terms accpet
+        jQuery('input[type="submit"]').prop("disabled", "true");				
+        jQuery("#terms").click(function () {
+          if(jQuery("#terms").is(":checked")){
+            jQuery('input[type="submit"]').prop("disabled", "");
+          }else{
+            jQuery('input[type="submit"]').prop("disabled", "true");				
+          }
+        });			
+      })
+
+  {{elif request.args(0)=='change_password':}}
+      web2py_validate_entropy(jQuery('#no_table_new_password'),100);
+  {{pass}}
+
+
+</script>
+{{end page_js}}

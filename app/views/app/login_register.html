@@ -1,0 +1,14 @@
+{{extend 'layout_app_logoff.html'}}
+
+<div class="jumbotron jumbotron-fluid background" style="background-color: #fff; padding:30px;word-wrap:break-word;">
+  <div class="container center">
+    <p class="alert alert-danger">Tag não localizada no sistema.</p>
+      <p>
+          A TAG informada não está cadastrada no sistema, crie uma conta na Wizy ou faça seu login, caso já possua cadastro.
+      </p>
+      <p>
+          <a href="{{=URL(c='default', f='user', args='register')}}" class="btn btn-secondary">Criar Conta</a>
+          <a href="{{=URL(c='default', f='user', args='login')}}" class="btn btn-secondary">Login</a>
+      </p>
+  </div>
+</div>

@@ -1,0 +1,42 @@
+{{extend 'layout_app_logged.html'}}
+
+<style>
+#pet_pet_image__row{
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+}
+
+#pet_pet_image__label{
+display: none;
+}
+
+#pet_pet_owner__row{
+display: none;
+}
+
+#pet_pet_image__row input[type=file] {
+  font-size: 100px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0;
+}
+
+.label-cam{
+  font-size: 12px;
+}
+</style>
+
+<style>#user_info_user_id__row{display:none;}</style>
+<div class="jumbotron jumbotron-fluid background" style="background-color: #fff; padding:30px;word-wrap:break-word;">
+  <div class="container center">
+      <p>
+        {{=form}}
+      </p>
+  </div>
+</div>
+
+<script>
+  $("#pet_pet_image__row").append("<img src='{{=URL('static', 'images/cam.png')}}'><br><span class='label-cam'>Adicione uma foto do seu pet.</span>");
+</script>

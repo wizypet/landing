@@ -1,0 +1,13 @@
+{{extend 'layout_app_logoff.html'}}
+
+<div class="jumbotron jumbotron-fluid background" style="background-color: #fff; padding:30px;word-wrap:break-word;">
+  <div class="container">
+    <h3>Bem vindo(a) a plataforma da Wizy! Parabéns, você agora faz parte dessa comunidade!</h3>
+    <p>
+       <a href="{{=URL(c='app', f='user_pets', args=request.args(0))}}">Clique aqui </a> ver seus pets cadastrados.
+    </p>
+    <p>
+        <a href="{{=URL(c='default', f='about')}}">Clique aqui </a>para saber mais sobre nós.
+    </p>
+  </div>
+</div>
